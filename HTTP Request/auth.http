@@ -1,0 +1,22 @@
+### Send POST request with json body
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+  "email": "111@gmail.com",
+  "password": "content"
+}
+
+### Send POST request with json body
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "email": "111@gmail.com",
+  "password": "content"
+}
+
+### GET request with a header
+GET http://localhost:8080/users/me
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiMTExQGdtYWlsLmNvbSIsImlhdCI6MTY5OTE5NjczOCwiZXhwIjoxNjk5MTk3MzM4fQ.7eZzLq6XFmHNEDOK9hVLq4dt2KH_ORYxwohNpSP4CqI
