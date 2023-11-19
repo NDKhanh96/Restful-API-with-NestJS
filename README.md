@@ -30,7 +30,14 @@
 
 ```bash
 $ yarn install
+# run dev
 $ yarn db:dev:restart
+# show db dev in browser
+$ yarn prisma:dev:show:in:browser
+# run test
+$ yarn db:test:restart
+# show db test in browser
+$ yarn prisma:test:show:in:browser
 ```
 
 ## Running the app

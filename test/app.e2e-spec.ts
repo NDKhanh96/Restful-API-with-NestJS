@@ -1,24 +1,25 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { INestApplication } from '@nestjs/common';
-import * as request from 'supertest';
 import { AppModule } from '../src/app.module';
+import { INestApplication, ValidationPipe } from '@nestjs/common';
+import { PrismaService } from '../src/prisma/prisma.service';
 
-describe('AppController (e2e)', () => {
+const PORT: number = 8080;
+describe('App 2e2 test', () => {
   let app: INestApplication;
-
-  beforeEach(async () => {
-    const moduleFixture: TestingModule = await Test.createTestingModule({
+  let prismaService: PrismaService;
+  beforeAll(async (): Promise<void> => {
+    const appModule: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
     }).compile();
-
-    app = moduleFixture.createNestApplication();
+    app = appModule.createNestApplication();
+    app.useGlobalPipes(new ValidationPipe());
     await app.init();
+    await app.listen(PORT);
+    prismaService = app.get(PrismaService);
+    await prismaService.cleanDataBase();
   });
-
-  it('/ (GET)', () => {
-    return request(app.getHttpServer())
-      .get('/')
-      .expect(200)
-      .expect('Hello World!');
+  afterAll(async (): Promise<void> => {
+    await app.close();
   });
+  it.todo('should pass 1111');
 });

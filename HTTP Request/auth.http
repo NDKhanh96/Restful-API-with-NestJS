@@ -19,4 +19,4 @@ Content-Type: application/json
 ### GET request with a header
 GET http://localhost:8080/users/me
 Accept: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiMTExQGdtYWlsLmNvbSIsImlhdCI6MTY5OTE5NjczOCwiZXhwIjoxNjk5MTk3MzM4fQ.7eZzLq6XFmHNEDOK9hVLq4dt2KH_ORYxwohNpSP4CqI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiMTExQGdtYWlsLmNvbSIsImlhdCI6MTY5OTYyNTgwMSwiZXhwIjoxNjk5NjI2NDAxfQ.KhsMxxfuENMnaUTZS4XAOC8akl8yB-ZfIOGQZLIe_M0

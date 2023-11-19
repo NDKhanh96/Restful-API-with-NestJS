@@ -6,10 +6,18 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "db:dev:restart": "yarn db:dev:remove && yarn db:dev:create && sleep 2 && yarn prisma:dev:deploy",
+    "prisma:dev:show:in:browser": "npx prisma studio",
+    "db:test:restart": "yarn db:test:remove && yarn db:test:create && sleep 2 && yarn prisma:test:deploy",
+    "prisma:test:show:in:browser": "npx dotenv -e .env.test -- prisma studio",
     "prisma:dev:deploy": "prisma migrate deploy",
     "db:dev:remove": "docker-compose down --volumes --remove-orphans",
     "db:dev:create": "docker-compose up -d dev-database",
-    "db:dev:restart": "yarn db:dev:remove && yarn db:dev:create && yarn prisma:dev:deploy",
+    "prisma:test:deploy": "npx dotenv -e .env.test prisma migrate deploy",
+    "db:test:remove": "docker-compose down --volumes --remove-orphans",
+    "db:test:create": "docker-compose up -d test-database",
+    "pretest:e2e": "yarn db:test:restart",
+    "test:e2e": "jest --watch -no-cache --config ./test/jest-e2e.json",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
@@ -20,8 +28,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
-    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
@@ -34,6 +41,8 @@
     "argon2": "^0.31.2",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
+    "dotenv": "^16.3.1",
+    "dotenv-cli": "^7.3.0",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
     "reflect-metadata": "^0.1.13",
