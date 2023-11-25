@@ -50,7 +50,7 @@ export class NoteController {
 
   @HttpCode(HttpStatus.NO_CONTENT)
   @Delete()
-  deleteNoteById(@Query('id', ParseIntPipe) noteId: number){
+  deleteNoteById(@Query('id', ParseIntPipe) noteId: number) {
     return this.noteService.deleteNoteById(noteId);
   }
 }
