@@ -5,7 +5,7 @@ services:
     image: postgres:15.0
     container_name: dev-database
     ports:
-      - 5434:5432 #{port in host(myPC)} : {port in Container}
+      - "5434:5432" #{port in host(myPC)} : {port in Container}
     #enviroment variables, like: db's username, password...
     environment:
       POSTGRES_USER: postgres
@@ -18,11 +18,11 @@ services:
     image: postgres:15.0
     container_name: test-database
     ports:
-      - 5435:5432 #{port in host(myPC)} : {port in Container} #environment variables, like: db's username, password...
+      - "5435:5432" #{port in host(myPC)} : {port in Container} #environment variables, like: db's username, password...
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: Abc123456789
-      POSTGRES_DB: testdb
+      POSTGRES_DB: testDB
     networks:
       - nestjs-network
 networks:
