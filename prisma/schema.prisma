@@ -32,8 +32,8 @@ model Note {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   // relationship
-  userID      Int // foreign key
-  user        User     @relation(fields: [userID], references: [id])
+  userId      Int // foreign key
+  user        User     @relation(fields: [userId], references: [id])
 
   @@map("notes")
 }

@@ -6,6 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "update:db:dev": "npx prisma migrate dev",
     "db:dev:restart": "yarn db:dev:remove && yarn db:dev:create && sleep 2 && yarn prisma:dev:deploy",
     "prisma:dev:show:in:browser": "npx dotenv -e .env -- prisma studio",
     "db:test:restart": "yarn db:test:remove && yarn db:test:create && sleep 2 && yarn prisma:test:deploy",
