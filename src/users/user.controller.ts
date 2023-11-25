@@ -7,7 +7,7 @@ import { User } from '@prisma/client';
 export class UserController {
   @UseGuards(CustomJwtGuard)
   @Get('me')
-  me(@GetUser() user: User) {
+  me(@GetUser() user: User): User {
     //request come from validate of Jwt.strategy
     return user;
   }
