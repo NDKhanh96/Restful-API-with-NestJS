@@ -99,13 +99,69 @@ describe('App 2e2 test', () => {
   });
 
   describe('Note', (): void => {
-    describe('Get Detail User', (): void => {
-      it('should get detail user', () => {
+    describe('Insert note', (): void => {
+      it('insert first note', () => {
         return pactum
           .spec()
-          .get('/users/me')
-          .withHeaders({ Authorization: '$S{accessToken}' })
+          .post('/notes')
+          .withHeaders({
+            Authorization: '$S{accessToken}',
+          })
+          .withBody({
+            title: 'This is title 11',
+            description: 'description 11',
+            url: 'www.yahoo.com',
+          })
+          .expectStatus(201)
+          .stores('nodeId01', 'id')
+          .inspect();
+      });
+      it('insert second note', () => {
+        return pactum
+          .spec()
+          .post('/notes')
+          .withHeaders({
+            Authorization: '$S{accessToken}',
+          })
+          .withBody({
+            title: 'This is title 222',
+            description: 'description 222',
+            url: 'www.twitter.com',
+          })
+          .expectStatus(201)
+          .stores('nodeId02', 'id')
+          .inspect();
+      });
+      it('get Note by id}', () => {
+        return pactum
+          .spec()
+          .get('/notes')
+          .withHeaders({
+            Authorization: '$S{accessToken}',
+          })
+          .withPathParams('id', '${nodeId01}')
           .expectStatus(200);
+      });
+      it('get All Notes', () => {
+        return pactum
+          .spec()
+          .get('/notes')
+          .withHeaders({
+            Authorization: '$S{accessToken}',
+          })
+          .inspect()
+          .expectStatus(200);
+      });
+      it('delete note by ID', () => {
+        return pactum
+          .spec()
+          .delete('/notes')
+          .withHeaders({
+            Authorization: '$S{accessToken}',
+          })
+          .withQueryParams('id', '$S{nodeId02}')
+          .inspect()
+          .expectStatus(204);
       });
     });
   });

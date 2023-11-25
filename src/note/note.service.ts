@@ -23,10 +23,15 @@ export class NoteService {
     });
   }
 
-  getNoteById(noteId: number) {}
+  getNoteById(noteId: number) {
+    return this.prismaService.note.findFirst({
+      where: {
+        id: noteId,
+      },
+    });
+  }
 
   updateNoteById(noteId: number, updateNoteDto: UpdateNoteDTO) {
-    console.log(noteId);
     const note = this.prismaService.note.findUnique({
       where: {
         id: noteId,
@@ -43,14 +48,14 @@ export class NoteService {
     });
   }
 
-  deleteNoteById(noteId: number) {
+  async deleteNoteById(noteId: number) {
     const note = this.prismaService.note.findUnique({
       where: {
         id: noteId,
       },
     });
     if (!note) {
-      throw new ForbiddenException('Can not find note to delete');
+      throw new ForbiddenException('Cannot find Note to delete');
     }
     return this.prismaService.note.delete({
       where: {

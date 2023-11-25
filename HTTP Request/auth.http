@@ -24,18 +24,23 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsI
 ### Send POST request with json body
 POST http://localhost:8080/notes
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiMTExQGdtYWlsLmNvbSIsImlhdCI6MTcwMDkxMDM1MiwiZXhwIjoxNzAwOTEwOTUyfQ.f86fqJH25q75pe2BdHIJ7lcy8KulMKUkL3i_toLd_6U
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiMTExQGdtYWlsLmNvbSIsImlhdCI6MTcwMDkxMjU0OCwiZXhwIjoxNzAwOTEzMTQ4fQ.YxxEUZmJa6mwMtW_HHWIVzEUEPVtbcUaZBfC4Mjc3Jk
 
 {
-  "title": "title 2",
-  "description": "description 2",
+  "title": "title 1",
+  "description": "description 1",
   "url": "www.google.com"
 }
 
 ### GET request with a header
 GET http://localhost:8080/notes
 Accept: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiMTExQGdtYWlsLmNvbSIsImlhdCI6MTcwMDkxMTg2OCwiZXhwIjoxNzAwOTEyNDY4fQ.RbnyZ7FEcHMt1z_oQYGro3DGMAxrfAEXL4vIBUn-cZE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiMTExQGdtYWlsLmNvbSIsImlhdCI6MTcwMDkxMjU0OCwiZXhwIjoxNzAwOTEzMTQ4fQ.YxxEUZmJa6mwMtW_HHWIVzEUEPVtbcUaZBfC4Mjc3Jk
+
+### GET request with a header
+GET http://localhost:8080/notes/3
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiMTExQGdtYWlsLmNvbSIsImlhdCI6MTcwMDkxMjU0OCwiZXhwIjoxNzAwOTEzMTQ4fQ.YxxEUZmJa6mwMtW_HHWIVzEUEPVtbcUaZBfC4Mjc3Jk
 
 ### Send PATCH request with json body
 PATCH http://localhost:8080/notes/1
